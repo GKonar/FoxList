@@ -1,36 +1,27 @@
-import { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { makeStyles } from '@material-ui/core/styles';
+
+import SearchInput from './Components/SearchInput';
+
+const useStyles = makeStyles({
+  App: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100vh',
+    alignItems: 'center'
+  },
+});
 
 const App = () => {
-  const allProducts = ['apple', 'apricot', 'pineapple', 'tomato', 'carrot', 'cabbage', 'coconut', 'cucumber', 'celery', 'couliflower', 'courgette', 'lettuce', 'raddish'];
+  const classes = useStyles();
 
-  const [products, setProducts] = useState([]);
-
-  const filterVegArray = (e) => {
-    const searchValue = e.target.value;
-    const filterdArray = allProducts.filter(p => p.toLowerCase().includes(searchValue.toLowerCase()) && p[0] === searchValue[0]?.toLowerCase());
-
-    setProducts(searchValue.length > 0 ? filterdArray : []);
-  };
+  const allProducts = [
+    'apple', 'apricot', 'pineapple', 'tomato', 'carrot', 'cabbage', 'coconut', 'cucumber', 'celery', 'couliflower', 'courgette', 'lettuce', 'raddish'
+  ];
 
   return (
-    <div style={{ marginLeft: '40%', marginTop: '60px' }}>
+    <div className={classes.App}>
       <h3>FoxList</h3>
-      <Autocomplete
-        style={{ width: 500 }}
-        freeSolo
-        autoComplete
-        autoHighlight
-        options={products}
-        renderInput={(params) => (
-          <TextField {...params}
-            onChange={e => filterVegArray(e)}
-            variant="outlined"
-            label="Fox tail"
-          />
-        )}
-      />
+      <SearchInput allProducts={allProducts} />
     </div>
   );
 }
