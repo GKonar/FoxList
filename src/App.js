@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { products, productsObj } from "./assets/products";
+import { productsObj } from "./assets/products";
 
 import SearchInput from "./Components/SearchInput";
 
@@ -19,7 +19,7 @@ const App = () => {
   return (
     <div className={classes.App}>
       <h3>FoxList</h3>
-      <SearchInput allProducts={products} productsObj={productsObj} />
+      <SearchInput productsObj={productsObj} />
     </div>
   );
 };

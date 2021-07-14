@@ -3,14 +3,24 @@ import { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
-const SearchInput = ({ allProducts, productsObj }) => {
+const SearchInput = ({ productsObj }) => {
   const [products, setProducts] = useState([]);
 
-  console.log(productsObj);
-
   const filterVegArray = e => {
+    // get language - gonna be dynamically drag from object
+    let language = "english";
+
+    // get input value
     const searchValue = e.target.value;
-    const filterdArray = allProducts.filter(
+
+    // get first letter
+    const firstLetter = searchValue.charAt(0).toUpperCase();
+
+    // select right array in object
+    let firstLetterArray = productsObj[language][firstLetter];
+
+    // filter array
+    const filterdArray = firstLetterArray?.filter(
       p =>
         p.toLowerCase().includes(searchValue.toLowerCase()) &&
         p[0] === searchValue[0]?.toLowerCase(),
