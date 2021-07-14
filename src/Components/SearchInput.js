@@ -2,6 +2,9 @@ import { useState } from "react";
 
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { StylesProvider } from "@material-ui/core/styles";
+
+import "./SearchInput.scss";
 
 const SearchInput = ({ productsObj }) => {
   const [products, setProducts] = useState([]);
@@ -30,21 +33,23 @@ const SearchInput = ({ productsObj }) => {
   };
 
   return (
-    <Autocomplete
-      style={{ width: 500 }}
-      freeSolo
-      autoComplete
-      autoHighlight
-      options={products}
-      renderInput={params => (
-        <TextField
-          {...params}
-          onChange={e => filterVegArray(e)}
-          variant="outlined"
-          label="Fox tail"
-        />
-      )}
-    />
+    <StylesProvider injectFirst>
+      <Autocomplete
+        style={{ width: 500 }}
+        freeSolo
+        autoComplete
+        autoHighlight
+        options={products}
+        renderInput={params => (
+          <TextField
+            {...params}
+            onChange={e => filterVegArray(e)}
+            variant="outlined"
+            label="Fox tail"
+          />
+        )}
+      />
+    </StylesProvider>
   );
 };
 
