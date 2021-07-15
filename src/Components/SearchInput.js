@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { Button } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/core/styles";
 
 import "./SearchInput.scss";
@@ -19,7 +20,7 @@ const SearchInput = ({ productsObj }) => {
     // get first letter
     const firstLetter = searchValue.charAt(0).toUpperCase();
 
-    // select right array in object
+    // select array with right letter key in object
     let firstLetterArray = productsObj[language][firstLetter];
 
     // filter array
@@ -28,27 +29,36 @@ const SearchInput = ({ productsObj }) => {
         p.toLowerCase().includes(searchValue.toLowerCase()) &&
         p[0] === searchValue[0]?.toLowerCase(),
     );
+    console.log("hej");
 
     setProducts(searchValue.length > 0 ? filterdArray : []);
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log("go");
+  };
+
   return (
     <StylesProvider injectFirst>
-      <Autocomplete
-        style={{ width: 500 }}
-        freeSolo
-        autoComplete
-        autoHighlight
-        options={products}
-        renderInput={params => (
-          <TextField
-            {...params}
-            onChange={e => filterVegArray(e)}
-            variant="outlined"
-            label="Fox tail"
-          />
-        )}
-      />
+      <form className="form" onSubmit={handleSubmit}>
+        <Autocomplete
+          style={{ width: 500 }}
+          freeSolo
+          autoComplete
+          autoHighlight
+          options={products}
+          renderInput={params => (
+            <TextField
+              {...params}
+              onChange={e => filterVegArray(e)}
+              variant="outlined"
+              label="Fox tail"
+            />
+          )}
+        />
+        <Button type="submit">Add</Button>
+      </form>
     </StylesProvider>
   );
 };

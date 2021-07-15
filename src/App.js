@@ -9,7 +9,11 @@ const useStyles = makeStyles({
     flexDirection: "column",
     height: "100vh",
     alignItems: "center",
-    backgroundColor: "#fad390",
+    backgroundColor: "#dff9fb",
+  },
+
+  Header: {
+    color: "#6ab04c",
   },
 });
 
@@ -18,7 +22,7 @@ const App = () => {
 
   return (
     <div className={classes.App}>
-      <h3>FoxList</h3>
+      <h3 className={classes.Header}>FoxList</h3>
       <SearchInput productsObj={productsObj} />
     </div>
   );

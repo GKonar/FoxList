@@ -1,8 +1,42 @@
+.form {
+  display: flex;
+}
+
 .MuiOutlinedInput-root {
   position: relative;
   border-radius: 20px;
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #4834d4;
+  }
+
+  &.Mui-focused {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: #4834d4;
+    } 
+  }
 }
 
-.MuiFormLabel-root.Mui-focused {
-  color: salmon;
+.MuiOutlinedInput-root:hover {
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #686de0;
+  }
 }
+
+.MuiFormLabel-root {
+  color: #4834d4;
+  
+  &.Mui-focused {
+    color: #4834d4;
+  }
+}
+
+// submit button
+.MuiButton-root {
+  border-radius: 50%;
+}
+
+
+
+
+
