@@ -5,36 +5,40 @@
 .MuiOutlinedInput-root {
   position: relative;
   border-radius: 20px;
+  color: #227093;
+  font-weight: bold;
 
   .MuiOutlinedInput-notchedOutline {
-    border-color: #4834d4;
+    border-color: #227093;
   }
 
   &.Mui-focused {
     .MuiOutlinedInput-notchedOutline {
-      border-color: #4834d4;
+      border-color: #227093;
     } 
   }
 }
 
 .MuiOutlinedInput-root:hover {
   .MuiOutlinedInput-notchedOutline {
-    border-color: #686de0;
+    border-color: #227093;
   }
 }
 
 .MuiFormLabel-root {
-  color: #4834d4;
+  color: #227093;
   
   &.Mui-focused {
-    color: #4834d4;
+    color: #227093;
   }
 }
 
 // submit button
 .MuiButton-root {
-  margin-left: .5rem;
+  margin-left: .4rem;
   border-radius: 20px;
+  color: #227093;
+  font-size: 1rem;
 }
 
 

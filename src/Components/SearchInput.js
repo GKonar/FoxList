@@ -29,7 +29,8 @@ const SearchInput = ({ productsObj }) => {
         p.toLowerCase().includes(searchValue.toLowerCase()) &&
         p[0] === searchValue[0]?.toLowerCase(),
     );
-    console.log("hej");
+
+    console.log(filterdArray);
 
     setProducts(searchValue.length > 0 ? filterdArray : []);
   };
@@ -57,7 +58,7 @@ const SearchInput = ({ productsObj }) => {
             />
           )}
         />
-        <Button type="submit">Add</Button>
+        <Button type="submit">add</Button>
       </form>
     </StylesProvider>
   );
