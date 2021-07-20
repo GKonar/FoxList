@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { productsObj } from "./assets/products";
 
 import SearchInput from "./Components/SearchInput";
+import ProductsList from "./Components/ProductsList";
 
 //  This pattern is downloaded from www.subtlepatterns.com
 import AppBcg from "./assets/images/app_bcg.png";
@@ -39,6 +40,7 @@ const App = () => {
       <div className={classes.List}>
         <h1 className={classes.Header}>FoxList</h1>
         <SearchInput productsObj={productsObj} />
+        <ProductsList />
       </div>
     </div>
   );

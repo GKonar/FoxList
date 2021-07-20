@@ -48,7 +48,9 @@ const SearchInput = ({ productsObj }) => {
           variant="outlined"
           label="Fox tail"
         />
-        <Button type="submit">add</Button>
+        {
+          // <Button type="submit">add</Button>
+        }
       </form>
     </StylesProvider>
   );
