@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Button } from "@material-ui/core";
 import { StylesProvider } from "@material-ui/core/styles";
 
@@ -43,20 +42,11 @@ const SearchInput = ({ productsObj }) => {
   return (
     <StylesProvider injectFirst>
       <form className="form" onSubmit={handleSubmit}>
-        <Autocomplete
+        <TextField
           style={{ width: 500 }}
-          freeSolo
-          autoComplete
-          autoHighlight
-          options={products}
-          renderInput={params => (
-            <TextField
-              {...params}
-              onChange={e => filterVegArray(e)}
-              variant="outlined"
-              label="Fox tail"
-            />
-          )}
+          onChange={e => filterVegArray(e)}
+          variant="outlined"
+          label="Fox tail"
         />
         <Button type="submit">add</Button>
       </form>
@@ -65,3 +55,27 @@ const SearchInput = ({ productsObj }) => {
 };
 
 export default SearchInput;
+
+// ** Not sure which i like more
+// return (
+// 	<StylesProvider injectFirst>
+// 		<form className="form" onSubmit={handleSubmit}>
+// 			<Autocomplete
+// 				style={{ width: 500 }}
+// 				freeSolo
+// 				autoComplete
+// 				autoHighlight
+// 				options={products}
+// 				renderInput={params => (
+// 					<TextField
+// 						{...params}
+// 						onChange={e => filterVegArray(e)}
+// 						variant="outlined"
+// 						label="Fox tail"
+// 					/>
+// 				)}
+// 			/>
+// 			<Button type="submit">add</Button>
+// 		</form>
+// 	</StylesProvider>
+// );
