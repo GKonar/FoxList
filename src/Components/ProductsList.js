@@ -10,7 +10,7 @@ const useStyles = makeStyles({
 });
 
 // default products for testing purposes
-const ProductsList = ({ products = ["kapusta", "sałata"] }) => {
+const ProductsList = ({ products = ["cabbage", "salat"] }) => {
   const classes = useStyles();
 
   return (

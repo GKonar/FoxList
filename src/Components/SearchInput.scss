@@ -32,28 +32,3 @@
     color: #227093;
   }
 }
-
-// submit button
-.MuiButton-root {
-  margin-left: .5rem;
-  border-radius: 20px;
-  color: #227093;
-  font-weight: bold;
-  font-size: 1rem;
-  box-shadow: 0px 0px 3px 1px #227093;
-
-  &:hover {
-    box-shadow: 0px 0px 10px 1px #227093;
-    background-color: transparent;
-  }
-
-  &:active {
-    box-shadow: 0px 0px 2px 1px #227093;
-    background-color: transparent;
-  }
-}
-
-
-
-
-
