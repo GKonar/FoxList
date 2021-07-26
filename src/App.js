@@ -12,9 +12,9 @@ const useStyles = makeStyles({
   App: {
     display: "flex",
     flexDirection: "column",
-    height: "100vh",
     alignItems: "center",
     backgroundImage: `url(${AppBcg})`,
+    overflow: "hidden",
   },
 
   Header: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   List: {
     backgroundColor: "pink",
     height: "100vh",
-    padding: "0 4rem",
+    padding: "0 6rem",
     backgroundImage: `url(${ListBcg})`,
     borderLeft: ".5rem solid #227093",
     borderRight: ".5rem solid #227093",
