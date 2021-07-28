@@ -15,8 +15,8 @@ const ProductsList = ({ products = ["cabbage", "salat"] }) => {
 
   return (
     <ul className={classes.List}>
-      {products.map(p => (
-        <ProductsListItem product={p} />
+      {products.map((p, i) => (
+        <ProductsListItem key={i} product={p} />
       ))}
     </ul>
   );
