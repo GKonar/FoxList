@@ -16,20 +16,19 @@ const useStyles = makeStyles({
 
     "&:hover": {
       cursor: "default",
+      height: "40px",
     },
-
-    // "&:last-child": {
-    //   borderBottom: "1px solid #227093",
-    // },
   },
   Button: {
     border: "none",
     borderRadius: "50%",
     display: "flex",
+    width: "25px",
+    height: "25px",
     alignItems: "flex-end",
     background: "#f1c40f",
     boxShadow: "0px 0px 4px 1px #227093",
-    transition: "all .2s",
+    // transition: "all .2s",
     margin: "0 .2rem 0 .2rem",
 
     "&:hover": {
@@ -53,6 +52,8 @@ const useStyles = makeStyles({
 
     "&:hover": {},
 
+    "&:active": {},
+
     "&:not(:hover)": {},
   },
   Count: {
@@ -64,9 +65,18 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductsListItem = ({ product }) => {
+interface IProductsListItemProps {
+  product: string;
+}
+
+const ProductsListItem = ({ product }: IProductsListItemProps) => {
   const classes = useStyles();
   const [count, setCount] = useState(0);
+
+  const decrement = (count: number) => {
+    if (count === 0) return 0;
+    setCount(count - 1);
+  };
 
   return (
     <li className={classes.ListItem}>
@@ -76,15 +86,13 @@ const ProductsListItem = ({ product }) => {
         <span
           onClick={() => setCount(count + 1)}
           className={classes.Button}
-          type="submit">
+        >
           <PlusIcon className={classes.Icon} />
         </span>
         <span
-          onClick={() => setCount(count - 1)}
-          className={`${classes.Button} ${
-            count === 0 && classes.DecrementButton
-          }`}
-          type="submit">
+          onClick={() => decrement(count)}
+          className={classes.Button}
+        >
           <MinusIcon className={classes.Icon} />
         </span>
       </div>

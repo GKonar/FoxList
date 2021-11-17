@@ -1,5 +1,6 @@
-// after fetch from db
-const productsObj = {
+import {IProductsObject} from '../interfaces/products/products.interfaces'
+
+const productsObject: IProductsObject = {
   english: {
     A: ["apple", "apricot"],
     B: [],
@@ -38,9 +39,47 @@ const productsObj = {
     Y: [],
     Z: [],
   },
+  polish: {
+    A: ["apple", "apricot"],
+    B: [],
+    C: [
+      "carrot",
+      "cabbage",
+      "coconut",
+      "cucumber",
+      "celery",
+      "couliflower",
+      "courgette",
+      "capers",
+      "celeriac",
+    ],
+    D: [],
+    E: [],
+    F: [],
+    G: [],
+    H: [],
+    I: [],
+    J: [],
+    K: [],
+    L: ["lettuce"],
+    M: [],
+    N: [],
+    O: [],
+    P: ["pineapple"],
+    Q: [],
+    R: ["raddish"],
+    S: [],
+    T: ["tomato"],
+    U: [],
+    V: [],
+    W: [],
+    X: [],
+    Y: [],
+    Z: [],
+  }
 };
 
-const products = [
+const products: string[] = [
   "apple",
   "apricot",
   "pineapple",
@@ -58,4 +97,4 @@ const products = [
   "celeriac",
 ];
 
-export { products, productsObj };
+export { products, productsObject };

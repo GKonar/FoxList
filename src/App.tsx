@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { productsObj } from "./assets/products";
+import { productsObject } from "./assets/products";
 
 import SearchInput from "./Components/SearchInput";
 import ProductsList from "./Components/ProductsList";
@@ -23,7 +23,6 @@ const useStyles = makeStyles({
   },
 
   List: {
-    backgroundColor: "pink",
     height: "100vh",
     padding: "0 6rem",
     backgroundImage: `url(${ListBcg})`,
@@ -39,7 +38,7 @@ const App = () => {
     <div className={classes.App}>
       <div className={classes.List}>
         <h1 className={classes.Header}>FoxList</h1>
-        <SearchInput productsObj={productsObj} />
+        <SearchInput productsObject={productsObject} />
         <ProductsList />
       </div>
     </div>
