@@ -79,22 +79,22 @@ const productsObject: IProductsObject = {
   }
 };
 
-const products: string[] = [
-  "apple",
-  "apricot",
-  "pineapple",
-  "tomato",
-  "carrot",
-  "cabbage",
-  "coconut",
-  "cucumber",
-  "celery",
-  "couliflower",
-  "courgette",
-  "lettuce",
-  "raddish",
-  "capers",
-  "celeriac",
-];
+// const products: string[] = [
+//   "apple",
+//   "apricot",
+//   "pineapple",
+//   "tomato",
+//   "carrot",
+//   "cabbage",
+//   "coconut",
+//   "cucumber",
+//   "celery",
+//   "couliflower",
+//   "courgette",
+//   "lettuce",
+//   "raddish",
+//   "capers",
+//   "celeriac",
+// ];
 
-export { products, productsObject };
+export { productsObject };

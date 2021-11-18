@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ProductsListItem from "./ProductsListItem";
 
@@ -7,6 +7,11 @@ const useStyles = makeStyles({
     listStyle: "none",
     padding: 0,
   },
+  EmptyListMessage: {
+    color: "#1c5f7e",
+    display: "flex",
+    cursor: "pointer"
+  }
 });
 
 interface IProductsListProps {
@@ -25,7 +30,7 @@ const ProductsList = ({ products }: IProductsListProps) => {
               products.map((p, i) => <ProductsListItem key={i} product={p} />)
             }
           </ul>
-        ) : null
+        ) : <h3 className={classes.EmptyListMessage}>Create new list... 😉</h3>
       }
     </Fragment>
   );
