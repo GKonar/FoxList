@@ -16,9 +16,10 @@ const useStyles = makeStyles({
 
 interface IProductsListProps {
   products: string[];
+  handleFocus: () => void;
 }
 
-const ProductsList = ({ products }: IProductsListProps) => {
+const ProductsList = ({ products, handleFocus }: IProductsListProps) => {
   const classes = useStyles();
 
   return (
@@ -30,7 +31,7 @@ const ProductsList = ({ products }: IProductsListProps) => {
               products.map((p, i) => <ProductsListItem key={i} product={p} />)
             }
           </ul>
-        ) : <h3 className={classes.EmptyListMessage}>Create new list... 😉</h3>
+        ) : <h3 className={classes.EmptyListMessage} onClick={handleFocus}>Create new list... 😉</h3>
       }
     </Fragment>
   );

@@ -45,15 +45,11 @@ const SearchInput = (searchInputProps: ISearchInputProps): JSX.Element => {
           onChange={e => filterVegArray(e)}
           reference={inputRef}
         />
-        <ProductsList products={products} />
+        <ProductsList products={products} handleFocus={handleClick} />
         {
           // <Button type="submit">add</Button>
-
         }
       </form>
-      {/* <button onClick={handleClick}>
-        FOCUS ON INPUT
-      </button> */}
     </StylesProvider>
   );
 };
