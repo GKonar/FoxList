@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   TextField: {
+    color: "#1c5f7e",
     minWidth: "500px",
     padding: "1rem",
     borderRadius: "15px",
@@ -10,14 +11,24 @@ const useStyles = makeStyles({
     fontSize: "1rem",
     borderStyle: "solid",
 
-    "&:focus": {
-      boxShadow: "0px 0px 5px 1px #227093",
-      outline: "none"
-    },
 
     "&::placeholder": {
+      position: "absolute",
       color: "#1c5f7e",
-      opacity: "0.6",
+      opacity: "0.8",
+      left: "20px",
+      transition: ".6s",
+
+    },
+
+    "&:focus": {
+      boxShadow: "0px 0px 5px 1px #227093",
+      outline: "none",
+
+      "&&::placeholder": {
+        left: "450px",
+        opacity: "0",
+      }
     },
   }
 });
