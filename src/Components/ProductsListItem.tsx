@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 // import PlusIcon from "../assets/icons/plus.png";
@@ -28,8 +28,9 @@ const useStyles = makeStyles({
     alignItems: "flex-end",
     background: "#f1c40f",
     boxShadow: "0px 0px 4px 1px #227093",
-    // transition: "all .2s",
+    transition: "all .2s",
     margin: "0 .2rem 0 .2rem",
+    marginRight: "5px",
 
     "&:hover": {
       boxShadow: "0px 0px 8px 1px #227093",
@@ -40,21 +41,27 @@ const useStyles = makeStyles({
     },
   },
 
-  DecrementButton: {
-    transition: ".2s",
-    visibility: "hidden",
+  Button_disabled: {
+    width: "25px",
+    height: "25px",
+    borderRadius: "50%",
+    margin: "0 .2rem 0 .2rem",
+    opacity: ".8",
+    boxShadow: "0px 0px 4px 1px #227093",
+    marginRight: "5px",
   },
+
   Icon: {
     fill: "#1c5f7e",
     width: "25px",
     height: "25px",
     cursor: "pointer",
-
-    "&:hover": {},
-
-    "&:active": {},
-
-    "&:not(:hover)": {},
+  },
+  Icon_disabled: {
+    opacity: ".8",
+    fill: "#1c5f7e",
+    width: "25px",
+    height: "25px",
   },
   Count: {
     marginRight: ".5rem",
@@ -71,7 +78,19 @@ interface IProductsListItemProps {
 
 const ProductsListItem = ({ product }: IProductsListItemProps) => {
   const classes = useStyles();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState<number>(0);
+  const [isDisabled, setIsDisabled] = useState<boolean>(true)
+
+  const { ListItem, CountWrap, Count, Button, Button_disabled, Icon, Icon_disabled } = classes;
+
+  useEffect((): void => {
+    if (count === 0) setIsDisabled(true)
+  }, [count])
+
+  const increment = (count: number) => {
+    setCount(count + 1);
+    setIsDisabled(false);
+  };
 
   const decrement = (count: number) => {
     if (count === 0) return 0;
@@ -79,21 +98,21 @@ const ProductsListItem = ({ product }: IProductsListItemProps) => {
   };
 
   return (
-    <li className={classes.ListItem}>
+    <li className={ListItem}>
       {product}
-      <div className={classes.CountWrap}>
-        <span className={classes.Count}>{count}</span>
+      <div className={CountWrap}>
+        <span className={Count}>{count}</span>
         <span
-          onClick={() => setCount(count + 1)}
-          className={classes.Button}
+          onClick={() => increment(count)}
+          className={Button}
         >
-          <PlusIcon className={classes.Icon} />
+          <PlusIcon className={Icon} />
         </span>
         <span
           onClick={() => decrement(count)}
-          className={classes.Button}
+          className={isDisabled ? Button_disabled : Button}
         >
-          <MinusIcon className={classes.Icon} />
+          <MinusIcon className={isDisabled ? Icon_disabled : Icon} />
         </span>
       </div>
     </li>
