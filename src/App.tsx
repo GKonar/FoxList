@@ -5,7 +5,7 @@ import SearchInput from "./Components/SearchInput";
 // import ProductsList from "./Components/ProductsList";
 
 //  This pattern is downloaded from www.subtlepatterns.com
-import AppBcg from "./assets/images/app_bcg.png";
+// import AppBcg from "./assets/images/app_bcg.png";
 import ListBcg from "./assets/images/list_bcg.png";
 
 const useStyles = makeStyles({
@@ -13,7 +13,8 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundImage: `url(${AppBcg})`,
+    // backgroundImage: `url(${AppBcg})`,
+    backgroundColor: "#f6e58d",
     overflow: "hidden",
   },
 

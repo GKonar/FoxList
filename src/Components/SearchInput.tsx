@@ -12,14 +12,15 @@ interface ISearchInputProps {
 
 const SearchInput = (searchInputProps: ISearchInputProps): JSX.Element => {
   const [products, setProducts] = useState<string[]>([]);
+  const [isFocused, setIsFocused] = useState<boolean>(false)
   const { productsObject } = searchInputProps;
   const inputRef = useRef<HTMLInputElement>(null);
 
   const filterVegArray = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
     let language: string = "english";
     const searchValue: string = e.target.value;
-    const firstLetter: string = searchValue.charAt(0).toUpperCase();
-    const firstLetterArray: string[] = productsObject[language as keyof IProductsObject][firstLetter as keyof IVegsArrays];
+    const firstInputLetter: string = searchValue.charAt(0).toUpperCase();
+    const firstLetterArray: string[] = productsObject[language as keyof IProductsObject][firstInputLetter as keyof IVegsArrays];
     const filteredArray = firstLetterArray?.filter(
       (p: string) =>
         p.toLowerCase().includes(searchValue.toLowerCase()) &&
@@ -36,6 +37,7 @@ const SearchInput = (searchInputProps: ISearchInputProps): JSX.Element => {
 
   const handleClick = () => {
     inputRef.current?.focus();
+    setIsFocused(true);
   }
 
   return (
