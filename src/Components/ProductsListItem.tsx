@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 // import PlusIcon from "../assets/icons/plus.png";
@@ -40,7 +40,6 @@ const useStyles = makeStyles({
       boxShadow: "0px 0px 2px 1px #227093",
     },
   },
-
   Button_disabled: {
     width: "25px",
     height: "25px",
@@ -50,7 +49,6 @@ const useStyles = makeStyles({
     boxShadow: "0px 0px 4px 1px #227093",
     marginRight: "5px",
   },
-
   Icon: {
     fill: "#1c5f7e",
     width: "25px",
@@ -74,9 +72,10 @@ const useStyles = makeStyles({
 
 interface IProductsListItemProps {
   product: string;
+  setProductsList?: Dispatch<SetStateAction<string[]>>;
 }
 
-const ProductsListItem = ({ product }: IProductsListItemProps) => {
+const ProductsListItem = ({ product, setProductsList }: IProductsListItemProps) => {
   const classes = useStyles();
   const [count, setCount] = useState<number>(0);
   const [isDisabled, setIsDisabled] = useState<boolean>(true)

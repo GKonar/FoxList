@@ -1,19 +1,16 @@
 import React, { useState, useRef } from "react";
-// import TextField from "@material-ui/core/TextField";
-import TextField from "./TextField";
+import TextField from "../Components/TextField";
 import { IProductsObject, IVegsArrays } from '../interfaces/products/products.interfaces';
-import { StylesProvider } from "@material-ui/core/styles";
-import "./SearchInput.scss";
-import ProductsList from "./ProductsList";
+import ProductsList from "../Components/ProductsList";
 
-interface ISearchInputProps {
+interface IFoxListProps {
   productsObject: IProductsObject;
 }
 
-const SearchInput = (searchInputProps: ISearchInputProps): JSX.Element => {
+const FoxListStartupPage = (foxListProps: IFoxListProps): JSX.Element => {
   const [products, setProducts] = useState<string[]>([]);
   const [isFocused, setIsFocused] = useState<boolean>(false)
-  const { productsObject } = searchInputProps;
+  const { productsObject } = foxListProps;
   const inputRef = useRef<HTMLInputElement>(null);
 
   const filterVegArray = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
@@ -41,19 +38,17 @@ const SearchInput = (searchInputProps: ISearchInputProps): JSX.Element => {
   }
 
   return (
-    <StylesProvider injectFirst>
-      <form className="form" onSubmit={(e) => handleSubmit(e)}>
-        <TextField
-          onChange={e => filterVegArray(e)}
-          reference={inputRef}
-        />
-        <ProductsList products={products} handleFocus={handleClick} />
-        {
-          // <Button type="submit">add</Button>
-        }
-      </form>
-    </StylesProvider>
+    <form className="form" onSubmit={(e) => handleSubmit(e)}>
+      <TextField
+        onChange={e => filterVegArray(e)}
+        reference={inputRef}
+      />
+      <ProductsList
+        products={products}
+        handleFocus={handleClick}
+      />
+    </form>
   );
 };
 
-export default SearchInput;
+export default FoxListStartupPage;

@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ProductsListItem from "./ProductsListItem";
 
@@ -22,6 +22,7 @@ interface IProductsListProps {
 
 const ProductsList = ({ products, handleFocus }: IProductsListProps) => {
   const classes = useStyles();
+  const [productsList, setProductsList] = useState<string[]>([]);
 
   return (
     <Fragment>
@@ -29,7 +30,7 @@ const ProductsList = ({ products, handleFocus }: IProductsListProps) => {
         products?.length > 0 ? (
           <ul className={classes.List}>
             {
-              products.map((p, i) => <ProductsListItem key={i} product={p} />)
+              products.map((p, i) => <ProductsListItem key={i} product={p} setProductsList={setProductsList} />)
             }
           </ul>
         ) : <h3 className={classes.EmptyListMessage} onClick={handleFocus}>No items, add some... 😉</h3>
