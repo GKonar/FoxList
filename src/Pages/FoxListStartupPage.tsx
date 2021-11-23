@@ -1,14 +1,14 @@
 import React, { useState, useRef } from "react";
 import TextField from "../Components/TextField";
-import { IProductsObject, IVegsArrays } from '../interfaces/products/products.interfaces';
-import ProductsList from "../Components/ProductsList";
+import { IProduct, IProductsObject, IVegsArrays } from '../interfaces/products/products.interfaces';
+import ProductsList from "../Components/DynamicProductsList";
 
 interface IFoxListProps {
   productsObject: IProductsObject;
 }
 
 const FoxListStartupPage = (foxListProps: IFoxListProps): JSX.Element => {
-  const [products, setProducts] = useState<string[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [isFocused, setIsFocused] = useState<boolean>(false)
   const { productsObject } = foxListProps;
   const inputRef = useRef<HTMLInputElement>(null);
@@ -17,11 +17,11 @@ const FoxListStartupPage = (foxListProps: IFoxListProps): JSX.Element => {
     let language: string = "english";
     const searchValue: string = e.target.value;
     const firstInputLetter: string = searchValue.charAt(0).toUpperCase();
-    const firstLetterArray: string[] = productsObject[language as keyof IProductsObject][firstInputLetter as keyof IVegsArrays];
+    const firstLetterArray: IProduct[] = productsObject[language as keyof IProductsObject][firstInputLetter as keyof IVegsArrays];
     const filteredArray = firstLetterArray?.filter(
-      (p: string) =>
-        p.toLowerCase().includes(searchValue.toLowerCase()) &&
-        p[0] === searchValue[0]?.toLowerCase(),
+      (p: IProduct) =>
+        p.name.toLowerCase().includes(searchValue.toLowerCase()) &&
+        p.name[0] === searchValue[0]?.toLowerCase(),
     );
 
     setProducts(searchValue.length >= 0 ? filteredArray : []);

@@ -1,19 +1,96 @@
-import {IProductsObject} from '../interfaces/products/products.interfaces'
+import {IProductsObject} from '../interfaces/products/products.interfaces';
+import { v4 as uuidv4 } from 'uuid';
 
 const productsObject: IProductsObject = {
   english: {
-    A: ["apple", "apricot"],
-    B: [],
+    A: [
+      {
+        name: "apple",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      }, 
+      {
+        name: "apricot",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      }, 
+  ],
+    B: [
+      {
+        name: "banana",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      }
+    ],
     C: [
-      "carrot",
-      "cabbage",
-      "coconut",
-      "cucumber",
-      "celery",
-      "couliflower",
-      "courgette",
-      "capers",
-      "celeriac",
+      {
+        name: "carrot",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      },
+      {
+        name: "cabbage",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      },
+      {
+        name: "coconut",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      },
+      {
+        name: "cucumber",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      },{
+        name: "celery",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      },
+      {
+        name: "couliflower",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      },
+      {
+        name: "courgette",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      },
+      {
+        name: "capers",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      },
+      {
+        name: "celeriac",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      }
     ],
     D: [],
     E: [],
@@ -23,15 +100,47 @@ const productsObject: IProductsObject = {
     I: [],
     J: [],
     K: [],
-    L: ["lettuce"],
+    L: [
+      {
+        name: "lettuce",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      }
+    ],
     M: [],
     N: [],
     O: [],
-    P: ["pineapple"],
+    P: [
+      {
+        name: "pineapple",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      }
+    ],
     Q: [],
-    R: ["raddish"],
+    R: [
+      {
+        name: "raddish",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      }
+    ],
     S: [],
-    T: ["tomato"],
+    T: [
+      {
+        name: "tomato",
+        category: "friuts",
+        id: uuidv4(),
+        quantity: 0,
+        emoji: ""
+      }
+    ],
     U: [],
     V: [],
     W: [],
@@ -39,62 +148,44 @@ const productsObject: IProductsObject = {
     Y: [],
     Z: [],
   },
-  polish: {
-    A: ["apple", "apricot"],
-    B: [],
-    C: [
-      "carrot",
-      "cabbage",
-      "coconut",
-      "cucumber",
-      "celery",
-      "couliflower",
-      "courgette",
-      "capers",
-      "celeriac",
-    ],
-    D: [],
-    E: [],
-    F: [],
-    G: [],
-    H: [],
-    I: [],
-    J: [],
-    K: [],
-    L: ["lettuce"],
-    M: [],
-    N: [],
-    O: [],
-    P: ["pineapple"],
-    Q: [],
-    R: ["raddish"],
-    S: [],
-    T: ["tomato"],
-    U: [],
-    V: [],
-    W: [],
-    X: [],
-    Y: [],
-    Z: [],
-  }
+  // polish: {
+  //   A: ["apple", "apricot"],
+  //   B: [],
+  //   C: [
+  //     "carrot",
+  //     "cabbage",
+  //     "coconut",
+  //     "cucumber",
+  //     "celery",
+  //     "couliflower",
+  //     "courgette",
+  //     "capers",
+  //     "celeriac",
+  //   ],
+  //   D: [],
+  //   E: [],
+  //   F: [],
+  //   G: [],
+  //   H: [],
+  //   I: [],
+  //   J: [],
+  //   K: [],
+  //   L: ["lettuce"],
+  //   M: [],
+  //   N: [],
+  //   O: [],
+  //   P: ["pineapple"],
+  //   Q: [],
+  //   R: ["raddish"],
+  //   S: [],
+  //   T: ["tomato"],
+  //   U: [],
+  //   V: [],
+  //   W: [],
+  //   X: [],
+  //   Y: [],
+  //   Z: [],
+  // }
 };
-
-// const products: string[] = [
-//   "apple",
-//   "apricot",
-//   "pineapple",
-//   "tomato",
-//   "carrot",
-//   "cabbage",
-//   "coconut",
-//   "cucumber",
-//   "celery",
-//   "couliflower",
-//   "courgette",
-//   "lettuce",
-//   "raddish",
-//   "capers",
-//   "celeriac",
-// ];
 
 export { productsObject };

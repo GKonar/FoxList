@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ProductsListItem from "./ProductsListItem";
+import { IProduct } from "../interfaces/products/products.interfaces";
 
 const useStyles = makeStyles({
   List: {
@@ -15,14 +16,14 @@ const useStyles = makeStyles({
 });
 
 interface IProductsListProps {
-  products: string[];
+  products: IProduct[];
   isInputFocused?: boolean;
   handleFocus: () => void;
 }
 
-const ProductsList = ({ products, handleFocus }: IProductsListProps) => {
+const DynamicProductsList = ({ products, handleFocus }: IProductsListProps) => {
   const classes = useStyles();
-  const [productsList, setProductsList] = useState<string[]>([]);
+  const [productsList, setProductsList] = useState<IProduct[]>([]);
 
   return (
     <Fragment>
@@ -30,7 +31,13 @@ const ProductsList = ({ products, handleFocus }: IProductsListProps) => {
         products?.length > 0 ? (
           <ul className={classes.List}>
             {
-              products.map((p, i) => <ProductsListItem key={i} product={p} setProductsList={setProductsList} />)
+              products.map((p, i) => (
+                <ProductsListItem
+                  key={i}
+                  product={p}
+                  setProductsList={setProductsList}
+                  productsList={productsList}
+                />))
             }
           </ul>
         ) : <h3 className={classes.EmptyListMessage} onClick={handleFocus}>No items, add some... 😉</h3>
@@ -39,4 +46,4 @@ const ProductsList = ({ products, handleFocus }: IProductsListProps) => {
   );
 };
 
-export default ProductsList;
+export default DynamicProductsList;

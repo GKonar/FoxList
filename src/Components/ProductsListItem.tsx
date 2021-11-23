@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // import PlusIcon from "../assets/icons/plus.png";
 import { ReactComponent as PlusIcon } from "../assets/icons/plus-round.svg";
 import { ReactComponent as MinusIcon } from "../assets/icons/minus-round.svg";
+import { IProduct } from "../interfaces/products/products.interfaces";
 
 const useStyles = makeStyles({
   ListItem: {
@@ -71,47 +72,50 @@ const useStyles = makeStyles({
 });
 
 interface IProductsListItemProps {
-  product: string;
-  setProductsList?: Dispatch<SetStateAction<string[]>>;
+  product: IProduct;
+  setProductsList: Dispatch<SetStateAction<IProduct[]>>;
+  productsList: IProduct[];
 }
 
-const ProductsListItem = ({ product, setProductsList }: IProductsListItemProps) => {
+const ProductsListItem = ({ product, setProductsList, productsList }: IProductsListItemProps) => {
   const classes = useStyles();
   const [count, setCount] = useState<number>(0);
-  const [isDisabled, setIsDisabled] = useState<boolean>(true)
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
 
   const { ListItem, CountWrap, Count, Button, Button_disabled, Icon, Icon_disabled } = classes;
 
   useEffect((): void => {
-    if (count === 0) setIsDisabled(true)
+    if (count === 0) setIsButtonDisabled(true)
   }, [count])
 
-  const increment = (count: number) => {
+  const addItem = (count: number, product: IProduct) => {
     setCount(count + 1);
-    setIsDisabled(false);
+    setProductsList([...productsList, product])
+    setIsButtonDisabled(false);
   };
 
-  const decrement = (count: number) => {
+  const removeItem = (count: number, product: IProduct) => {
     if (count === 0) return 0;
+
     setCount(count - 1);
   };
 
   return (
     <li className={ListItem}>
-      {product}
+      {product.name}
       <div className={CountWrap}>
         <span className={Count}>{count}</span>
         <span
-          onClick={() => increment(count)}
+          onClick={() => addItem(count, product)}
           className={Button}
         >
           <PlusIcon className={Icon} />
         </span>
         <span
-          onClick={() => decrement(count)}
-          className={isDisabled ? Button_disabled : Button}
+          onClick={() => removeItem(count, product)}
+          className={isButtonDisabled ? Button_disabled : Button}
         >
-          <MinusIcon className={isDisabled ? Icon_disabled : Icon} />
+          <MinusIcon className={isButtonDisabled ? Icon_disabled : Icon} />
         </span>
       </div>
     </li>
