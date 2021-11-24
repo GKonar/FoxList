@@ -15,15 +15,15 @@ const useStyles = makeStyles({
   }
 });
 
-interface IProductsListProps {
+interface IDynamicProductsListProps {
   products: IProduct[];
   isInputFocused?: boolean;
-  handleFocus: () => void;
+  handleFocus?: () => void;
 }
 
-const DynamicProductsList = ({ products, handleFocus }: IProductsListProps) => {
+const DynamicProductsList = ({ products, handleFocus }: IDynamicProductsListProps) => {
   const classes = useStyles();
-  const [productsList, setProductsList] = useState<IProduct[]>([]);
+  // const [productsList, setProductsList] = useState<IProduct[]>([]);
 
   return (
     <Fragment>
@@ -33,10 +33,10 @@ const DynamicProductsList = ({ products, handleFocus }: IProductsListProps) => {
             {
               products.map((p, i) => (
                 <ProductsListItem
-                  key={i}
+                  key={p.id}
                   product={p}
-                  setProductsList={setProductsList}
-                  productsList={productsList}
+                // setProductsList={setProductsList}
+                // productsList={productsList}
                 />))
             }
           </ul>

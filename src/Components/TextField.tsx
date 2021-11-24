@@ -39,23 +39,23 @@ const useStyles = makeStyles({
     },
   },
 
-  Placeholder: {
-    position: "absolute",
-    top: "-10px",
-    left: "15px",
-    zIndex: 10000,
-    backgroundColor: "#86C9C7",
-    padding: "0px 5px 0px 5px",
-    color: "#1c5f7e",
+  // Placeholder: {
+  //   position: "absolute",
+  //   top: "-10px",
+  //   left: "15px",
+  //   zIndex: 10000,
+  //   backgroundColor: "#86C9C7",
+  //   padding: "0px 5px 0px 5px",
+  //   color: "#1c5f7e",
 
-    // "&:focus": {
-    //   top: "-10px",
-    //   left: "15px",
-    //   zIndex: "10000",
-    //   backgroundColor: "#86C9C7",
-    //   padding: "0px 5px 0px 5px"
-    // }
-  },
+  // "&:focus": {
+  //   top: "-10px",
+  //   left: "15px",
+  //   zIndex: "10000",
+  //   backgroundColor: "#86C9C7",
+  //   padding: "0px 5px 0px 5px"
+  // }
+  // },
 
 
 });

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import TextField from "../Components/TextField";
 import { IProduct, IProductsObject, IVegsArrays } from '../interfaces/products/products.interfaces';
-import ProductsList from "../Components/DynamicProductsList";
+import DynamicProductsList from "../Components/DynamicProductsList";
 
 interface IFoxListProps {
   productsObject: IProductsObject;
@@ -13,7 +13,7 @@ const FoxListStartupPage = (foxListProps: IFoxListProps): JSX.Element => {
   const { productsObject } = foxListProps;
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const filterVegArray = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
+  const filteredProducts = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
     let language: string = "english";
     const searchValue: string = e.target.value;
     const firstInputLetter: string = searchValue.charAt(0).toUpperCase();
@@ -40,10 +40,10 @@ const FoxListStartupPage = (foxListProps: IFoxListProps): JSX.Element => {
   return (
     <form className="form" onSubmit={(e) => handleSubmit(e)}>
       <TextField
-        onChange={e => filterVegArray(e)}
+        onChange={e => filteredProducts(e)}
         reference={inputRef}
       />
-      <ProductsList
+      <DynamicProductsList
         products={products}
         handleFocus={handleClick}
       />
