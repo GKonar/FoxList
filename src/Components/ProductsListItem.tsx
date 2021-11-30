@@ -103,18 +103,12 @@ const ProductsListItem = (
       {name}
       <div className={CountWrap}>
         <span className={Count}>{quantity}</span>
-        {true ? (<span
+        <span
           onClick={() => addProduct(product)}
           className={Button}
         >
           <PlusIcon className={Icon} />
-        </span>) : (<span
-          onClick={() => addProduct(product)}
-          className={Button}
-        >
-          <PlusIcon className={Icon} />
-        </span>)}
-
+        </span>
         <span
           onClick={() => removeProduct(product.id)}
           className={isButtonDisabled ? Button_disabled : Button}
