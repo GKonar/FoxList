@@ -73,52 +73,56 @@ const useStyles = makeStyles({
 
 interface IProductsListItemProps {
   product: IProduct;
-  setProductsList: Dispatch<SetStateAction<IProduct[]>>;
-  productsList: IProduct[];
+  addProduct: ((product: IProduct) => void);
+  removeProduct: (productId: string) => void | number;
+
+  // setProductsList?: Dispatch<SetStateAction<IProduct[]>>;
+  // productsList?: IProduct[];
 }
 
-const ProductsListItem = ({ product, setProductsList, productsList }: IProductsListItemProps) => {
+const ProductsListItem = (
+  {
+    product,
+    addProduct,
+    removeProduct,
+  }
+    : IProductsListItemProps
+) => {
   const classes = useStyles();
-  const [count, setCount] = useState<number>(0);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
 
+  const { quantity, name } = product;
   const { ListItem, CountWrap, Count, Button, Button_disabled, Icon, Icon_disabled } = classes;
 
   useEffect((): void => {
-    if (count === 0) setIsButtonDisabled(true)
-  }, [count])
-
-  const addItem = (count: number, product: IProduct) => {
-    setCount(count + 1);
-    setProductsList([...productsList, product])
-    setIsButtonDisabled(false);
-  };
-
-  const removeItem = (count: number, product: IProduct) => {
-    if (count === 0) return 0;
-
-    setCount(count - 1);
-  };
+    if (quantity === 0) setIsButtonDisabled(true)
+  }, [quantity])
 
   return (
     <li className={ListItem}>
-      {product.name}
+      {name}
       <div className={CountWrap}>
-        <span className={Count}>{count}</span>
-        <span
-          onClick={() => addItem(count, product)}
+        <span className={Count}>{quantity}</span>
+        {true ? (<span
+          onClick={() => addProduct(product)}
           className={Button}
         >
           <PlusIcon className={Icon} />
-        </span>
+        </span>) : (<span
+          onClick={() => addProduct(product)}
+          className={Button}
+        >
+          <PlusIcon className={Icon} />
+        </span>)}
+
         <span
-          onClick={() => removeItem(count, product)}
+          onClick={() => removeProduct(product.id)}
           className={isButtonDisabled ? Button_disabled : Button}
         >
           <MinusIcon className={isButtonDisabled ? Icon_disabled : Icon} />
         </span>
       </div>
-    </li>
+    </li >
   );
 };
 
