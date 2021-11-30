@@ -22,6 +22,7 @@ const ProductsList = ({ products }: IProductsListProps) => {
     const existingItem = productsList.find(i => i.id === product.id);
     let newProduct = {
       ...product,
+      quantity: 1,
     }
 
     if (existingItem) {
@@ -42,7 +43,6 @@ const ProductsList = ({ products }: IProductsListProps) => {
 
   const removeProduct = (productId: string): void | number => {
     // if (product.quantity === 0) return 0;
-    console.log(productsList);
     const updatedProductsList = productsList.filter(product => product.id !== productId);
     setProductsList(updatedProductsList);
   };
