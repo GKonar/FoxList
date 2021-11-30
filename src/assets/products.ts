@@ -31,14 +31,14 @@ const productsObject: IProductsObject = {
     C: [
       {
         name: "carrot",
-        category: "friuts",
+        category: "vegs",
         id: uuidv4(),
         quantity: 0,
         emoji: ""
       },
       {
         name: "cabbage",
-        category: "friuts",
+        category: "vegs",
         id: uuidv4(),
         quantity: 0,
         emoji: ""
@@ -52,41 +52,41 @@ const productsObject: IProductsObject = {
       },
       {
         name: "cucumber",
-        category: "friuts",
+        category: "vegs",
         id: uuidv4(),
         quantity: 0,
         emoji: ""
       },{
         name: "celery",
-        category: "friuts",
+        category: "vegs",
         id: uuidv4(),
         quantity: 0,
         emoji: ""
       },
       {
         name: "couliflower",
-        category: "friuts",
+        category: "vegs",
         id: uuidv4(),
         quantity: 0,
         emoji: ""
       },
       {
         name: "courgette",
-        category: "friuts",
+        category: "vegs",
         id: uuidv4(),
         quantity: 0,
         emoji: ""
       },
       {
         name: "capers",
-        category: "friuts",
+        category: "vegs",
         id: uuidv4(),
         quantity: 0,
         emoji: ""
       },
       {
         name: "celeriac",
-        category: "friuts",
+        category: "vegs",
         id: uuidv4(),
         quantity: 0,
         emoji: ""
@@ -103,7 +103,7 @@ const productsObject: IProductsObject = {
     L: [
       {
         name: "lettuce",
-        category: "friuts",
+        category: "vegs",
         id: uuidv4(),
         quantity: 0,
         emoji: ""
@@ -125,7 +125,7 @@ const productsObject: IProductsObject = {
     R: [
       {
         name: "raddish",
-        category: "friuts",
+        category: "vegs",
         id: uuidv4(),
         quantity: 0,
         emoji: ""

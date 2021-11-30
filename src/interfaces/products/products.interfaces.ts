@@ -3,7 +3,7 @@ export interface IProduct {
   category: string;
   id: string;
   quantity: number;
-  emoji: string;
+  emoji?: string;
 }
 export interface IVegsArrays {
   A: IProduct[];
