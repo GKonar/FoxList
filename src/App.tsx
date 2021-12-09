@@ -15,15 +15,20 @@ const useStyles = makeStyles({
     // backgroundImage: `url(${AppBcg})`,
     backgroundColor: "#f6e58d",
     overflow: "hidden",
+    height: "100vh",
   },
 
   Header: {
     color: "#f1c40f",
+    textAlign: "center",
     textShadow: "2px 2px 0px rgba(0,0,0,0.2)",
+    fontSize: "2.5rem"
   },
 
   List: {
-    height: "100vh",
+    height: "100%",
+    minWidth: "550px",
+    maxWidth: "550px",
     padding: "0 6rem",
     backgroundImage: `url(${ListBcg})`,
     borderLeft: ".5rem solid #227093",
