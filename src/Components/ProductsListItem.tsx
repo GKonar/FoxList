@@ -1,7 +1,6 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState, useCallback, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonRound from "./ButtonRound";
-// import PlusIcon from "../assets/icons/plus.png";
 import { ReactComponent as PlusIcon } from "../assets/icons/plus-round.svg";
 import { ReactComponent as MinusIcon } from "../assets/icons/minus-round.svg";
 import { IProduct } from "../interfaces/products/products.interfaces";
@@ -87,16 +86,18 @@ const useStyles = makeStyles({
 
 interface IProductsListItemProps {
   product: IProduct;
+  staticProductsList?: IProduct[];
   addProduct: ((product: IProduct) => void);
-  removeProduct: (productId: string) => void | number;
+  removeProduct: ((product: IProduct) => void);
 
   // setProductsList?: Dispatch<SetStateAction<IProduct[]>>;
   // productsList?: IProduct[];
 }
 
-const ProductsListItem = (
+const ProductsListItem = ( // useMemo or useCallback
   {
     product,
+    staticProductsList,
     addProduct,
     removeProduct,
   }
@@ -105,12 +106,15 @@ const ProductsListItem = (
   const classes = useStyles();
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
 
-  const { quantity, name } = product;
+  const { name } = product;
   const { ListItem, Item, CountWrap, Count, ButtonStyles, Button_disabled, Icon, Icon_disabled } = classes;
 
+  // using data from static list to display quantity in dynamic list
+  const currentProduct: IProduct | undefined = staticProductsList?.find(p => p.name === product.name)
+
   useEffect((): void => {
-    if (quantity === 0) setIsButtonDisabled(true)
-  }, [quantity])
+    !currentProduct?.quantity ? setIsButtonDisabled(true) : setIsButtonDisabled(false);
+  }, [currentProduct?.quantity])
 
   return (
     <li className={ListItem}>
@@ -123,9 +127,9 @@ const ProductsListItem = (
         {name}
       </div>
       <div className={CountWrap}>
-        <span className={Count}>{quantity}</span>
+        <span className={Count}>{currentProduct?.quantity ?? 0}</span>
         <ButtonRound
-          handleClick={() => removeProduct(product.id)}
+          handleClick={() => removeProduct(product)}
           className={isButtonDisabled ? Button_disabled : ButtonStyles}>
           <MinusIcon className={isButtonDisabled ? Icon_disabled : Icon} />
         </ButtonRound>

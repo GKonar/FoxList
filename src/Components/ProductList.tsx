@@ -19,31 +19,39 @@ const ProductsList = ({ products }: IProductsListProps) => {
   const [productsList, setProductsList] = useState<IProduct[]>([]);
 
   const addProduct = (product: IProduct): void => {
-    const existingItem = productsList.find(i => i.id === product.id);
-    let newProduct = {
-      ...product,
-      quantity: 1,
-    }
+    const existingProduct = productsList.find(p => p.id === product.id);
+    console.log(existingProduct);
 
-    if (existingItem) {
-      updateProduct(product.id)
+    if (existingProduct) {
+      const updatedProductsList = productsList.map(p => (
+        p.id === product.id
+          ? { ...p, quantity: p.quantity += 1 }
+          : p
+      ));
+      setProductsList(updatedProductsList);
     } else {
+      const newProduct = {
+        ...product,
+        quantity: 1,
+      }
       setProductsList([...productsList, newProduct]);
     }
-  };
-
-  const updateProduct = (productId: string) => {
-    const updatedProductsList = productsList.map(product =>
-      product.id === productId
-        ? { ...product, quantity: product.quantity + 1 }
-        : product
-    )
-    setProductsList(updatedProductsList);
   }
 
-  const removeProduct = (productId: string): void | number => {
-    // if (product.quantity === 0) return 0;
-    const updatedProductsList = productsList.filter(product => product.id !== productId);
+  const removeProduct = (product: IProduct): void => {
+    const existingProduct = productsList.find(p => p.id === product.id);
+    let updatedProductsList: IProduct[];
+
+    if (existingProduct && existingProduct.quantity > 1) {
+      updatedProductsList = productsList.map(p => (
+        p.id === product.id
+          ? { ...p, quantity: p.quantity === 0 ? p.quantity = 0 : p.quantity -= 1 }
+          : p
+      ))
+    } else {
+      updatedProductsList = productsList.filter(p => p.id !== product.id);
+    }
+
     setProductsList(updatedProductsList);
   };
 
@@ -52,6 +60,7 @@ const ProductsList = ({ products }: IProductsListProps) => {
       {
         products.map((p) => (
           <ProductsListItem
+            staticProductsList={productsList}
             key={p.id}
             product={p}
             addProduct={addProduct}
