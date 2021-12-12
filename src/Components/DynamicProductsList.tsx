@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 // import ProductsListItem from "./ProductsListItem";
 import ProductsList from "./ProductList";
 import { IProduct } from "../interfaces/products/products.interfaces";
-import ProductsListItem from "./ProductsListItem";
 
 const useStyles = makeStyles({
   EmptyListMessage: {
