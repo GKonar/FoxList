@@ -7,6 +7,8 @@ import FoxListStartupPage from "./Pages/FoxListStartupPage";
 // import AppBcg from "./assets/images/app_bcg.png";
 import ListBcg from "./assets/images/list_bcg.png";
 
+import { ProductsProvider } from "./contexts/products.context";
+
 const useStyles = makeStyles({
   App: {
     display: "flex",
@@ -43,8 +45,9 @@ const App = () => {
     <div className={classes.App}>
       <div className={classes.List}>
         <h1 className={classes.Header}>FoxList</h1>
-        <FoxListStartupPage productsObject={productsObject} />
-        {/* <ProductsList /> */}
+        <ProductsProvider>
+          <FoxListStartupPage productsObject={productsObject} />
+        </ProductsProvider>
       </div>
     </div>
   );
