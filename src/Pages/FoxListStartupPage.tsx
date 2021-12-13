@@ -4,6 +4,7 @@ import TextField from "../Components/TextField";
 import { IProduct, IProductsObject, IVegsArrays } from '../interfaces/products/products.interfaces';
 import DynamicProductsList from "../Components/DynamicProductsList";
 import ButtonRound from "../Components/ButtonRound";
+import { getArrayByInputValue } from "../helper";
 import { ReactComponent as PlusIcon } from "../assets/icons/plus-round.svg";
 
 interface IFoxListProps {
@@ -32,6 +33,7 @@ const useStyles = makeStyles({
 });
 
 const FoxListStartupPage = (foxListProps: IFoxListProps): JSX.Element => {
+  // oryginally products gonna be fetched from DB
   const [products, setProducts] = useState<IProduct[]>([]);
   const [isFocused, setIsFocused] = useState<boolean>(false)
   const [welcomePage, setWelcomePage] = useState<boolean>(true);
@@ -41,19 +43,12 @@ const FoxListStartupPage = (foxListProps: IFoxListProps): JSX.Element => {
   const classes = useStyles();
   const { Icon, WelcomeText, WelcomeHeader } = classes;
 
-
   const filterProducts = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
-    let language: string = "english";
-    const searchValue: string = e.target.value;
-    const firstInputLetter: string = searchValue.charAt(0).toUpperCase();
-    const firstLetterArray: IProduct[] = productsObject[language as keyof IProductsObject][firstInputLetter as keyof IVegsArrays];
-    const filteredArray = firstLetterArray?.filter(
-      (p: IProduct) =>
-        p.name.toLowerCase().includes(searchValue.toLowerCase()) &&
-        p.name[0] === searchValue[0]?.toLowerCase(),
-    );
+    let language: string = "english"; // will be taken form app settings
+    const inputValue: string = e.target.value;
+    const filteredArray = getArrayByInputValue(inputValue, productsObject, language);
 
-    setProducts(searchValue.length >= 0 ? filteredArray : []);
+    setProducts(inputValue.length >= 0 ? filteredArray : []);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
