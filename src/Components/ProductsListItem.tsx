@@ -1,9 +1,11 @@
-import { Dispatch, SetStateAction, useEffect, useState, useCallback, useMemo } from "react";
+// import { Dispatch, SetStateAction, useEffect, useState, useCallback, useMemo } from "react";
+import { useContext, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonRound from "./ButtonRound";
 import { ReactComponent as PlusIcon } from "../assets/icons/plus-round.svg";
 import { ReactComponent as MinusIcon } from "../assets/icons/minus-round.svg";
 import { IProduct } from "../interfaces/products/products.interfaces";
+import { ProductsContext } from "../contexts/products.context";
 
 const useStyles = makeStyles({
   ListItem: {
@@ -86,31 +88,21 @@ const useStyles = makeStyles({
 
 interface IProductsListItemProps {
   product: IProduct;
-  staticProductsList?: IProduct[];
-  addProduct: ((product: IProduct) => void);
-  removeProduct: ((product: IProduct) => void);
-
-  // setProductsList?: Dispatch<SetStateAction<IProduct[]>>;
-  // productsList?: IProduct[];
 }
 
 const ProductsListItem = ( // useMemo or useCallback
-  {
-    product,
-    staticProductsList,
-    addProduct,
-    removeProduct,
-  }
-    : IProductsListItemProps
+  props: IProductsListItemProps
 ) => {
-  const classes = useStyles();
+  const { productsList, addProduct, removeProduct } = useContext(ProductsContext);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
-
+  const { product } = props;
   const { name } = product;
+
+  const classes = useStyles();
   const { ListItem, Item, CountWrap, Count, ButtonStyles, Button_disabled, Icon, Icon_disabled } = classes;
 
-  // using data from static list to display quantity in dynamic list
-  const currentProduct: IProduct | undefined = staticProductsList?.find(p => p.name === product.name)
+  // using data from productsList to display quantity in dynamic list
+  const currentProduct: IProduct | undefined = productsList?.find(p => p.name === product.name)
 
   useEffect((): void => {
     !currentProduct?.quantity ? setIsButtonDisabled(true) : setIsButtonDisabled(false);
@@ -120,7 +112,7 @@ const ProductsListItem = ( // useMemo or useCallback
     <li className={ListItem}>
       <div className={Item}>
         <ButtonRound
-          handleClick={() => addProduct(product)}
+          handleClick={() => addProduct?.(product)}
           className={ButtonStyles}>
           <PlusIcon className={Icon} />
         </ButtonRound>
@@ -129,7 +121,7 @@ const ProductsListItem = ( // useMemo or useCallback
       <div className={CountWrap}>
         <span className={Count}>{currentProduct?.quantity ?? 0}</span>
         <ButtonRound
-          handleClick={() => removeProduct(product)}
+          handleClick={() => removeProduct?.(product)}
           className={isButtonDisabled ? Button_disabled : ButtonStyles}>
           <MinusIcon className={isButtonDisabled ? Icon_disabled : Icon} />
         </ButtonRound>

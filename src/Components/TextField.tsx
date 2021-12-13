@@ -50,6 +50,7 @@ const TextField = ({ onChange, reference }: ITextFieldProps) => {
 
   return (
     <div className={classes.TextField_wrapper}>
+      {/* <form onSubmit></form> */}
       <input
         className={classes.TextField}
         placeholder="Add item"
@@ -57,7 +58,6 @@ const TextField = ({ onChange, reference }: ITextFieldProps) => {
         onChange={onChange}
         type="text"
       />
-
     </div>
   );
 };
