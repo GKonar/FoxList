@@ -1,23 +1,16 @@
-import React, { createContext, FC } from 'react'
-import { useProductState } from '../hooks/useProductState';
-import { IProduct } from '../interfaces/products/products.interfaces';
+import { createContext, FC, useReducer } from 'react'
+import { productsReducer, State } from '../reducers/products.reducer';
 
-interface IProductsContext {
-  productsList: IProduct[];
-  addProduct?: (product: IProduct) => void;
-  removeProduct?: (product: IProduct) => void;
+const defaultState: State = {
+  productsList: [],
 }
 
-const defaultState = {
-  productsList: []
-}
-
-export const ProductsContext = createContext<IProductsContext>(defaultState);
+export const ProductsContext = createContext<State>(defaultState);
 
 export const ProductsProvider: FC = ({ children }) => {
-  const productStuff = useProductState()
+  const [{ productsList }, dispatch] = useReducer(productsReducer, defaultState)
   return (
-    <ProductsContext.Provider value={productStuff}>
+    <ProductsContext.Provider value={{ productsList, dispatch }}>
       {children}
     </ProductsContext.Provider>
   )
