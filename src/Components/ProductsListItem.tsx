@@ -93,7 +93,7 @@ interface IProductsListItemProps {
 const ProductsListItem = ( // useMemo or useCallback
   props: IProductsListItemProps
 ) => {
-  const { productsList, addProduct, removeProduct } = useContext(ProductsContext);
+  const { productsList, dispatch } = useContext(ProductsContext);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
   const { product } = props;
   const { name } = product;
@@ -112,7 +112,7 @@ const ProductsListItem = ( // useMemo or useCallback
     <li className={ListItem}>
       <div className={Item}>
         <ButtonRound
-          handleClick={() => addProduct?.(product)}
+          handleClick={() => dispatch?.({ type: "ADD_PRODUCT", product })}
           className={ButtonStyles}>
           <PlusIcon className={Icon} />
         </ButtonRound>
@@ -121,7 +121,7 @@ const ProductsListItem = ( // useMemo or useCallback
       <div className={CountWrap}>
         <span className={Count}>{currentProduct?.quantity ?? 0}</span>
         <ButtonRound
-          handleClick={() => removeProduct?.(product)}
+          handleClick={() => dispatch?.({ type: "REMOVE_PRODUCT", product })}
           className={isButtonDisabled ? Button_disabled : ButtonStyles}>
           <MinusIcon className={isButtonDisabled ? Icon_disabled : Icon} />
         </ButtonRound>

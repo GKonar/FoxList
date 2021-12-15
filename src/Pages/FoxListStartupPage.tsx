@@ -1,7 +1,7 @@
 import React, { useState, useRef, Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "../Components/TextField";
-import { IProduct, IProductsObject, IVegsArrays } from '../interfaces/products/products.interfaces';
+import { IProduct, IProductsObject } from '../interfaces/products/products.interfaces';
 import DynamicProductsList from "../Components/DynamicProductsList";
 import ButtonRound from "../Components/ButtonRound";
 import { getArrayByInputValue } from "../helper";
@@ -26,8 +26,8 @@ const useStyles = makeStyles({
 
   Icon: {
     fill: "#1c5f7e",
-    width: "70px",
-    height: "70px",
+    width: "100px",
+    height: "100px",
     cursor: "pointer",
   },
 });
@@ -35,7 +35,6 @@ const useStyles = makeStyles({
 const FoxListStartupPage = (foxListProps: IFoxListProps): JSX.Element => {
   // oryginally products gonna be fetched from DB
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [isFocused, setIsFocused] = useState<boolean>(false)
   const [welcomePage, setWelcomePage] = useState<boolean>(true);
   const { productsObject } = foxListProps;
   const inputRef = useRef<HTMLInputElement>(null);
@@ -44,7 +43,7 @@ const FoxListStartupPage = (foxListProps: IFoxListProps): JSX.Element => {
   const { Icon, WelcomeText, WelcomeHeader } = classes;
 
   const filterProducts = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
-    let language: string = "english"; // will be taken form app settings
+    let language: string = "english"; // will be taken from app settings
     const inputValue: string = e.target.value;
     const filteredArray = getArrayByInputValue(inputValue, productsObject, language);
 
@@ -58,7 +57,6 @@ const FoxListStartupPage = (foxListProps: IFoxListProps): JSX.Element => {
 
   const handleInputFocus = () => {
     inputRef.current?.focus();
-    setIsFocused(true);
   }
 
   const createList = () => {
