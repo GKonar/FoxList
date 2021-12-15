@@ -31,8 +31,16 @@ const useStyles = makeStyles({
   },
 
   Button_big: {
-    width: "70px",
-    height: "70px",
+    width: "100px",
+    height: "100px",
+
+    "&:hover": {
+      boxShadow: "0px 0px 15px 5px #227093",
+    },
+
+    "&:active": {
+      boxShadow: "0px 0px 5px 3px #227093",
+    },
   }
 
 });

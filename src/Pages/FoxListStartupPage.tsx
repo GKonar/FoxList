@@ -26,8 +26,8 @@ const useStyles = makeStyles({
 
   Icon: {
     fill: "#1c5f7e",
-    width: "70px",
-    height: "70px",
+    width: "100px",
+    height: "100px",
     cursor: "pointer",
   },
 });
