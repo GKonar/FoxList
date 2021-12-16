@@ -5,12 +5,12 @@ export type Action =
   | {type: "ADD_PRODUCT", product: IProduct}
   | {type: "REMOVE_PRODUCT", product: IProduct};
 
-export interface State  {
+export interface IState  {
   productsList: IProduct[],
   dispatch?: Dispatch<Action>
 }
 
-export const productsReducer: Reducer<State, Action> = (state: State, action: Action ): State => {
+export const productsReducer: Reducer<IState, Action> = (state: IState, action: Action ): IState => {
   const existingProduct = state.productsList.find(p => p.id === action.product.id);
   let updatedProductsList: IProduct[];
   

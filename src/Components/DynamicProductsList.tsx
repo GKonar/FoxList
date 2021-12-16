@@ -1,7 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ProductsList from "./ProductList";
 import { IProduct } from "../interfaces/products/products.interfaces";
+import { ProductsContext } from "../contexts/products.context";
 
 const useStyles = makeStyles({
   EmptyListMessage: {
@@ -16,16 +17,19 @@ interface IDynamicProductsListProps {
   handleFocus?: () => void;
 }
 
-const DynamicProductsList = ({ products, handleFocus }: IDynamicProductsListProps) => {
+const DynamicProductsList = ({ products = [], handleFocus }: IDynamicProductsListProps) => {
   const classes = useStyles();
+  const { productsList = [] } = useContext(ProductsContext)
+  const hasNoItems: boolean = products?.length === 0 && productsList?.length === 0;
 
   return (
     <Fragment>
       {
-        products?.length > 0 ? (
-          <ProductsList products={products} />
-        ) : <h3 className={classes.EmptyListMessage} onClick={handleFocus}>No items, add some... 😉</h3>
+        products?.length > 0
+          ? <ProductsList products={products} />
+          : <ProductsList products={productsList} />
       }
+      {hasNoItems && <h3 className={classes.EmptyListMessage} onClick={handleFocus}>No items, add some... 😉</h3>}
     </Fragment >
   );
 };
