@@ -15,3 +15,7 @@ export const getArrayByInputValue = (
 
   return filteredArray
 }
+
+export const findExistingProduct = (productsList: IProduct[], product: IProduct): IProduct | undefined => {
+  return productsList.find(p => p.id === product.id);
+};

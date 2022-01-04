@@ -19,15 +19,13 @@ interface IDynamicProductsListProps {
 
 const DynamicProductsList = ({ products = [], handleFocus }: IDynamicProductsListProps) => {
   const classes = useStyles();
-  const { productsList = [] } = useContext(ProductsContext)
-  const hasNoItems: boolean = products?.length === 0 && productsList?.length === 0;
+  const { productsList = [] } = useContext(ProductsContext);
+  const hasNoItems: boolean = products.length === 0 && productsList.length === 0;
 
   return (
     <Fragment>
       {
-        products?.length > 0
-          ? <ProductsList products={products} />
-          : <ProductsList products={productsList} />
+        <ProductsList products={products.length > 0 ? products : productsList} />
       }
       {hasNoItems && <h3 className={classes.EmptyListMessage} onClick={handleFocus}>No items, add some... 😉</h3>}
     </Fragment >

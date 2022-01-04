@@ -23,7 +23,6 @@ const useStyles = makeStyles({
       height: "40px",
     },
   },
-
   Item: {
     display: "flex",
     alignItems: "center"
@@ -48,9 +47,7 @@ const useStyles = makeStyles({
     "&:active": {
       boxShadow: "0px 0px 2px 1px #227093",
     },
-
   },
-
   Button_disabled: {
     opacity: ".5",
     boxShadow: "0px 0px 0px 0px #227093",

@@ -4,7 +4,7 @@ import { productsObject } from "./assets/products";
 import FoxListStartupPage from "./Pages/FoxListStartupPage";
 
 //  This pattern is downloaded from www.subtlepatterns.com
-// import AppBcg from "./assets/images/app_bcg.png";
+import AppBcg from "./assets/images/app_bcg.png";
 import ListBcg from "./assets/images/list_bcg.png";
 
 import { ProductsProvider } from "./contexts/products.context";
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    // backgroundImage: `url(${AppBcg})`,
+    backgroundImage: `url(${AppBcg})`,
     backgroundColor: "#f6e58d",
     overflow: "hidden",
     height: "100vh",
