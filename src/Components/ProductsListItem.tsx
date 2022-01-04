@@ -1,7 +1,5 @@
-// import { Dispatch, SetStateAction, useEffect, useState, useCallback, useMemo } from "react";
 import { useContext, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import useToggle from '../hooks/useToggle';
 import ButtonRound from "./ButtonRound";
 import { ReactComponent as PlusIcon } from "../assets/icons/plus-round.svg";
 import { ReactComponent as MinusIcon } from "../assets/icons/minus-round.svg";
@@ -119,9 +117,9 @@ const ProductsListItem = ( // useMemo or useCallback
   const { ListItem, Item, CountWrap, Count, ButtonStyles, Button_disabled, IconNoItems, IconWithItems, Snackbar, Add, SnackbarHidden, SnackbarVisible, SnackbarVisibleAdd } = classes;
 
   // using data from productsList to display quantity in dynamic list
-  const currentProduct: IProduct | undefined = productsList?.find(p => p.name === product.name)
+  const currentProduct: IProduct | undefined = productsList?.find(p => p.id === product.id)
 
-  useEffect((): void => {
+  useEffect((): void => { // warning in console
     !currentProduct?.quantity ? setIsButtonDisabled(true) : setIsButtonDisabled(false);
   }, [currentProduct?.quantity])
 

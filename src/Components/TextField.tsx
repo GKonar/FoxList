@@ -41,22 +41,24 @@ const useStyles = makeStyles({
 });
 
 interface ITextFieldProps {
-  reference: React.RefObject<HTMLInputElement>;
+  reference?: React.RefObject<HTMLInputElement>;
+  placeholder: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+  value: string;
 }
 
-const TextField = ({ onChange, reference }: ITextFieldProps) => {
+const TextField = ({ onChange, reference, placeholder, value }: ITextFieldProps) => {
   const classes = useStyles();
 
   return (
     <div className={classes.TextField_wrapper}>
-      {/* <form onSubmit></form> */}
       <input
         className={classes.TextField}
-        placeholder="Add item"
+        placeholder={placeholder}
         ref={reference}
         onChange={onChange}
         type="text"
+        value={value}
       />
     </div>
   );
