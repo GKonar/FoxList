@@ -1,13 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { productsObject } from "./assets/products";
 
-import FoxListStartupPage from "./Pages/FoxListStartupPage";
-
 //  This pattern is downloaded from www.subtlepatterns.com
 import AppBcg from "./assets/images/app_bcg.png";
 import ListBcg from "./assets/images/list_bcg.png";
 
 import { ProductsProvider } from "./contexts/products.context";
+import RoutesMain from "./RoutesMain";
 
 const useStyles = makeStyles({
   App: {
@@ -46,7 +45,7 @@ const App = () => {
       <div className={classes.List}>
         <h1 className={classes.Header}>FoxList</h1>
         <ProductsProvider>
-          <FoxListStartupPage productsObject={productsObject} />
+          <RoutesMain productsObject={productsObject} />
         </ProductsProvider>
       </div>
     </div>
