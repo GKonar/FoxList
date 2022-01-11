@@ -7,16 +7,19 @@ import ListBcg from "./assets/images/list_bcg.png";
 
 import { ProductsProvider } from "./contexts/products.context";
 import RoutesMain from "./RoutesMain";
+import Lists from "./Components/Lists";
 
 const useStyles = makeStyles({
   App: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundImage: `url(${AppBcg})`,
-    backgroundColor: "#f6e58d",
+    // backgroundImage: `url(${AppBcg})`,
+    backgroundColor: "#F8EFBA",
     overflow: "hidden",
     height: "100vh",
+    zIndex: 1000,
+    position: "relative",
   },
 
   Header: {
@@ -39,16 +42,18 @@ const useStyles = makeStyles({
 
 const App = () => {
   const classes = useStyles();
-
   return (
-    <div className={classes.App}>
-      <div className={classes.List}>
-        <h1 className={classes.Header}>FoxList</h1>
-        <ProductsProvider>
+    <ProductsProvider>
+      <div className={classes.App}>
+        <div className={classes.List}>
+          <h1 className={classes.Header}>FoxList</h1>
           <RoutesMain productsObject={productsObject} />
-        </ProductsProvider>
+          <div>
+            <Lists />
+          </div>
+        </div>
       </div>
-    </div>
+    </ProductsProvider>
   );
 };
 
