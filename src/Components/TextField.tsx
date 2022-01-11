@@ -44,7 +44,7 @@ interface ITextFieldProps {
   reference?: React.RefObject<HTMLInputElement>;
   placeholder: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
-  value: string;
+  value?: string;
 }
 
 const TextField = ({ onChange, reference, placeholder, value }: ITextFieldProps) => {

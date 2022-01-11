@@ -51,7 +51,7 @@ const ButtonRound = ({ handleClick, className, children, sizeBig }: IButtonProps
 
   return (
     <span
-      onClick={() => handleClick()}
+      onClick={handleClick}
       className={`${Button} ${sizeBig ? Button_big : null} ${className}`}
     >
       {children}

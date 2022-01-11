@@ -24,6 +24,8 @@ const useStyles = makeStyles({
   },
 });
 
+// LoginPage in production app.
+
 const WelcomePage = (): JSX.Element => {
   const navigate = useNavigate();
   const classes = useStyles();

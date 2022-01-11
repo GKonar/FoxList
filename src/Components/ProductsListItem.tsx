@@ -106,7 +106,7 @@ interface IProductsListItemProps {
 const ProductsListItem = ( // useMemo or useCallback
   props: IProductsListItemProps
 ) => {
-  const { productsList, dispatch } = useContext(ProductsContext);
+  const { currentLists, productsList, dispatch } = useContext(ProductsContext);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
   const [isItemAdded, setIsItemAdded] = useState<boolean>(false);
   const [isItemRemoved, setIsItemRemoved] = useState<boolean>(false);
@@ -117,7 +117,9 @@ const ProductsListItem = ( // useMemo or useCallback
   const { ListItem, Item, CountWrap, Count, ButtonStyles, Button_disabled, IconNoItems, IconWithItems, Snackbar, Add, SnackbarHidden, SnackbarVisible, SnackbarVisibleAdd } = classes;
 
   // using data from productsList to display quantity in dynamic list
-  const currentProduct: IProduct | undefined = productsList?.find(p => p.id === product.id)
+  console.log("CurrentLists: ", currentLists)
+
+  const currentProduct: IProduct | undefined = productsList?.find((p: IProduct) => p.id === product.id)
 
   useEffect((): void => { // warning in console
     !currentProduct?.quantity ? setIsButtonDisabled(true) : setIsButtonDisabled(false);
@@ -125,6 +127,7 @@ const ProductsListItem = ( // useMemo or useCallback
 
   const handleAddProduct = (): void => {
     dispatch?.({ type: "ADD_PRODUCT", product });
+
     if (!currentProduct?.quantity) {
       setIsItemAdded(true);
       setTimeout(() => setIsItemAdded(false), 500);
